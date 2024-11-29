@@ -1,11 +1,11 @@
 from telethon import TelegramClient
-import asyncio
+import os
 from datetime import datetime, timedelta
 
-# Введіть дані
-API_ID = 26182309  # Замініть на ваш API ID
-API_HASH = "3e3b91c160ec4110e028137568c62236"  # Замініть на ваш API Hash
-GIF_PATH = r"1699393570818693.mp4"  # Шлях до GIF
+# Дані для підключення
+API_ID = 26182309
+API_HASH = "3e3b91c160ec4110e028137568c62236"
+GIF_PATH = r"1699393570818693.mp4"  # Файл GIF
 FRIEND_USERNAME = "@genjimainbtw"  # Ім'я користувача друга
 UTC_OFFSET = 3  # Часовий пояс MSK (UTC+3)
 
@@ -19,7 +19,7 @@ async def send_gif():
             print("Клієнт не підключений. Перепідключаємося...")
             await client.connect()
         if not await client.is_user_authorized():
-            print("Клієнт не авторизований. Перевірте сесію або авторизуйтеся.")
+            print("Клієнт не авторизований. Перевірте файл сесії.")
             return
         print(f"Відправляємо GIF другу {FRIEND_USERNAME}...")
         await client.send_file(FRIEND_USERNAME, GIF_PATH)
@@ -40,10 +40,10 @@ def seconds_until_target(hour, minute, utc_offset=0):
 
 # Основна функція
 async def main():
-    # Підключення до Telegram з використанням сесійного файлу
+    # Підключення через сесійний файл
     await client.connect()
     if not await client.is_user_authorized():
-        print("Клієнт не авторизований. Завантажте сесійний файл або авторизуйтеся вручну.")
+        print("Клієнт не авторизований. Завантажте файл сесії або авторизуйтеся вручну.")
         return
     print("Авторизація пройдена.")
 
