@@ -1,6 +1,4 @@
-# Ігнорувати всі сесійні файли Telethon
-*.session
-*.session-journal
+
 
 # Ігнорувати папку з віртуальним середовищем Python (venv)
 venv/
